@@ -10,6 +10,7 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.extension.rest.client.ArquillianResteasyResource;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
@@ -32,10 +33,11 @@ import static org.junit.Assert.*;
 public class BookEndpointTest {
 
     @Test
-    public void createBook(@ArquillianResteasyResource("api/books")WebTarget webTarget) throws Exception {
+    public void createBook(@ArquillianResteasyResource("api/books") ResteasyWebTarget webTarget) throws Exception {
 
         // Test counting books
         Response response = webTarget.path("count").request().get();
+        System.out.println(webTarget.getUri().toASCIIString());
         assertEquals(NO_CONTENT.getStatusCode(), response.getStatus());
 
         // Test find all

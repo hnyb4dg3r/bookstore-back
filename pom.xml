@@ -96,7 +96,7 @@
                 <version>${version.surefire.plugin}</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <arquillian.launch>jboss</arquillian.launch>
+                        <arquillian.launch>arquillian-wildfly-remote</arquillian.launch>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
